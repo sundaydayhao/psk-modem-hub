@@ -10,7 +10,7 @@ Project_Build:
 
 Project_PostBuild:
 	@echo Executing Post Build commands ...
-	@cd gpio/projects/examples/driver/gpio/CDK && export CDKPath="C:/C-Sky/CDK" CDK_VERSION="V2.24.2" ProjectName="gpio" ProjectPath="C:/projects/dsPIC/aim5101/gpio/projects/examples/driver/gpio/CDK/" && "C:/projects/dsPIC/aim5101/gpio/projects/examples/driver/gpio/CDK/../../../../../utilities//aft_build.sh"
+	@cd gpio/projects/examples/driver/gpio/CDK && export CDKPath="C:/C-Sky/CDK" CDK_VERSION="V2.24.2" ProjectName="gpio" ProjectPath="C:/projects/aim5101-am/aim5101/gpio/projects/examples/driver/gpio/CDK/" && "C:/projects/aim5101-am/aim5101/gpio/projects/examples/driver/gpio/CDK/../../../../../utilities//aft_build.sh"
 	@echo Done
 
 
