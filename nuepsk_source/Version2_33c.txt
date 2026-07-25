@@ -1,0 +1,3 @@
+NUE-PSK Digital Modem Version 2.33a 01/29/2010
+
+See the main.c module in the modem code for details.
