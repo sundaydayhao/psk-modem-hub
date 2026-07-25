@@ -24,6 +24,12 @@ extern int32_t drv_pin_config_mode(port_name_e port, uint8_t offset, gpio_mode_e
 #define ERR_GPIO(errno) (CSI_DRV_ERRNO_GPIO_BASE | errno)
 #define GPIO_NULL_PARAM_CHK(para)    HANDLE_PARAM_CHK(para, ERR_GPIO(DRV_ERROR_PARAMETER))
 
+#define AIM5101_GPIO_DATA(base)       (*(volatile uint32_t *)((base) + 0x000UL))
+#define AIM5101_GPIO_DIR(base)        (*(volatile uint32_t *)((base) + 0x400UL))
+#define AIM5101_GPIO_DATA_EN(base)    (*(volatile uint32_t *)((base) + 0x424UL))
+#define AIM5101_CRG_BASE              0x61000000UL
+#define AIM5101_PERI_CRG40            (*(volatile uint32_t *)(AIM5101_CRG_BASE + 0x0A0UL))
+
 typedef void *gpio_port_handle_t;
 
 typedef struct {
@@ -62,12 +68,12 @@ static int32_t gpio_set_direction(
 )
 {
     dw_gpio_priv_t *gpio_priv = port;
-    dw_gpio_reg_t *gpio_reg = (dw_gpio_reg_t *)(gpio_priv->base);
 
     if (direction == GPIO_DIRECTION_INPUT) {
-        gpio_reg->SWPORT_DDR &= (~gpio_priv->mask);
+        AIM5101_GPIO_DIR(gpio_priv->base) &= (~gpio_priv->mask);
     } else if (direction == GPIO_DIRECTION_OUTPUT) {
-        gpio_reg->SWPORT_DDR |= gpio_priv->mask;
+        AIM5101_GPIO_DATA_EN(gpio_priv->base) |= gpio_priv->mask;
+        AIM5101_GPIO_DIR(gpio_priv->base) |= gpio_priv->mask;
     } else {
         return ERR_GPIO(GPIO_ERROR_DIRECTION);
     }
@@ -85,8 +91,7 @@ static int32_t gpio_set_direction(
 static int32_t gpio_read(void *port, uint32_t *value)
 {
     dw_gpio_priv_t *gpio_priv = port;
-    dw_gpio_control_reg_t *gpio_control_reg = (dw_gpio_control_reg_t *)(gpio_priv->base + 0x30);
-    *value = gpio_control_reg->EXT_PORTA;
+    *value = AIM5101_GPIO_DATA(gpio_priv->base);
     return 0;
 }
 
@@ -102,13 +107,11 @@ static int32_t gpio_read(void *port, uint32_t *value)
 static int32_t gpio_write(void *port, uint32_t mask)
 {
     dw_gpio_priv_t *gpio_priv = port;
-    dw_gpio_reg_t *gpio_reg = (dw_gpio_reg_t *)(gpio_priv->base);
-
-    uint32_t value = gpio_reg->SWPORT_DR;
+    uint32_t value = AIM5101_GPIO_DATA(gpio_priv->base);
 
     value &= ~(mask);
     value |= gpio_priv->value;
-    gpio_reg->SWPORT_DR = value;
+    AIM5101_GPIO_DATA(gpio_priv->base) = value;
     return 0;
 }
 
@@ -290,6 +293,8 @@ gpio_port_handle_t csi_gpio_port_initialize(int32_t port)
         return NULL;
     }
 
+    AIM5101_PERI_CRG40 = (AIM5101_PERI_CRG40 | 0x01UL) & ~(1UL << 16);
+
     gpio_priv = &gpio_handle[idx];
 
     gpio_priv->base = base;
@@ -369,12 +374,6 @@ gpio_pin_handle_t csi_gpio_pin_initialize(int32_t gpio_pin, gpio_event_cb_t cb_e
         return NULL;
     }
 
-    uint32_t i;
-
-    for (i = 0; i < CONFIG_GPIO_NUM; i++) {
-        csi_gpio_port_initialize(i);
-    }
-
     /* obtain the gpio pin information */
     uint32_t port_idx;
     int32_t pin_idx = target_gpio_pin_init(gpio_pin, &port_idx);
@@ -383,11 +382,9 @@ gpio_pin_handle_t csi_gpio_pin_initialize(int32_t gpio_pin, gpio_event_cb_t cb_e
         return NULL;
     }
 
-    int32_t idx = pin_idx;
+    csi_gpio_port_initialize(port_idx);
 
-    for (i = 0; i < port_idx; i++) {
-        idx += (gpio_handle[i].pin_num);
-    }
+    int32_t idx = pin_idx;
 
     dw_gpio_pin_priv_t *gpio_pin_priv = &(gpio_pin_handle[idx]);
     gpio_pin_priv->portidx = port_idx;
@@ -514,7 +511,13 @@ int32_t csi_gpio_pin_config(gpio_pin_handle_t handle,
     gpio_priv->dir = dir;
     gpio_priv->mask = 1 << gpio_pin_priv->idx;
 
-    uint32_t ret = gpio_set_direction(gpio_priv, dir);
+    uint32_t ret = csi_gpio_pin_config_mode(handle, mode);
+
+    if (ret) {
+        return ret;
+    }
+
+    ret = gpio_set_direction(gpio_priv, dir);
 
     if (ret) {
         return ret;
@@ -603,4 +606,3 @@ int32_t csi_gpio_pin_set_irq(gpio_pin_handle_t handle, gpio_irq_mode_e mode, boo
     return ret;
 
 }
-

@@ -29,7 +29,7 @@ SECTIONS
  .text : {
   . = ALIGN(0x4) ;
   __stext = . ;
-  KEEP(*smartl_rv32_startup.o(*.text*))
+  KEEP(*aim5101_rv32_startup.o(*.text*))
   KEEP(*startup.o(*.text*))
   *(.text)
   *(.text*)

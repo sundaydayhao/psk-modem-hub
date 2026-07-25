@@ -14,7 +14,7 @@ CFLAGS += -g2
 CFLAGS += -Os
 
 TARGET_CPU = e906
-SOC	= smartl_rv32
+SOC	= aim5101_rv32
 BOARD = aim5101_board
 KERNEL = none
 HAVE_VIC = n

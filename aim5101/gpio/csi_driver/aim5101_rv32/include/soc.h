@@ -34,7 +34,7 @@ extern "C" {
 /* -------------------------  Interrupt Number Definition  ------------------------ */
 typedef enum IRQn {
     NMI_EXPn                        =   -2,      /* NMI Exception */
-    /* ----------------------  SmartL Specific Interrupt Numbers  --------------------- */
+    /* ----------------------  AIM5101 Specific Interrupt Numbers  -------------------- */
     Machine_Software_IRQn           =   3,      /* Machine software interrupt */
     User_Timer_IRQn                 =   4,      /* User timer interrupt */
     Supervisor_Timer_IRQn           =   5,      /* Supervisor timer interrupt */
@@ -73,7 +73,7 @@ IRQn_Type;
 
 #define CONFIG_TIMER_NUM    12
 #define CONFIG_USART_NUM    1
-#define CONFIG_GPIO_NUM     8
+#define CONFIG_GPIO_NUM     6
 #define CONFIG_GPIO_PIN_NUM 8
 
 /* ================================================================================ */
@@ -105,8 +105,13 @@ IRQn_Type;
 #define CSKY_STIMER3_BASE           (0x4001803cUL)
 #define CSKY_STIMER_CONTROL_BASE    (0x400110a0UL)
 
-#define CSKY_GPIOA_BASE             (0x40019000UL)
-#define CSKY_GPIOA_CONTROL_BASE     (0x40019030UL)
+#define CSKY_GPIOA_BASE             (0x60050000UL)
+#define CSKY_GPIOB_BASE             (0x60051000UL)
+#define CSKY_GPIOC_BASE             (0x60052000UL)
+#define CSKY_GPIOD_BASE             (0x60053000UL)
+#define CSKY_GPIOE_BASE             (0x60054000UL)
+#define CSKY_GPIOF_BASE             (0x60055000UL)
+#define CSKY_GPIOA_CONTROL_BASE     (CSKY_GPIOA_BASE)
 #define CSKY_SMPU_BASE              (0x4001a000UL)
 
 /* ================================================================================ */

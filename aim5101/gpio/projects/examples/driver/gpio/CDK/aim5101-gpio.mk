@@ -49,7 +49,7 @@ MakeDirCommand         :=mkdir
 LinkOptions            := -mcpu=e906  -nostartfiles -Wl,--gc-sections -T"$(ProjectPath)/../../../../../board/aim5101_board/gcc_csky.ld" -pipe 
 LinkOtherFlagsOption   :=-Wl,-zmax-page-size=1024
 IncludePackagePath     :=
-IncludeCPath           := $(IncludeSwitch). $(IncludeSwitch)../../../../../csi_core/include $(IncludeSwitch)../../../../../csi_driver/include $(IncludeSwitch)../../../../../libs/include $(IncludeSwitch)../../../../../csi_driver/smartl_rv32/include $(IncludeSwitch)../../../../../csi_kernel/include $(IncludeSwitch)../../../../../board/aim5101_board/include $(IncludeSwitch)../configs  
+IncludeCPath           := $(IncludeSwitch). $(IncludeSwitch)../../../../../csi_core/include $(IncludeSwitch)../../../../../csi_driver/include $(IncludeSwitch)../../../../../libs/include $(IncludeSwitch)../../../../../csi_driver/aim5101_rv32/include $(IncludeSwitch)../../../../../csi_kernel/include $(IncludeSwitch)../../../../../board/aim5101_board/include $(IncludeSwitch)../configs  
 IncludeAPath           := $(IncludeSwitch). $(IncludeSwitch)../configs  
 Libs                   := -Wl,--start-group  -Wl,--end-group $(LibrarySwitch)m  
 ArLibs                 := "m" 
@@ -72,10 +72,10 @@ ASFLAGS  :=-mcpu=e906  -Wa,-gdwarf-2 -pipe
 PreprocessFlags  :=-mcpu=e906 -Os    -Wall -ffunction-sections -fdata-sections -pipe 
 
 
-Objects0=$(IntermediateDirectory)/aim5101_board_board_init$(ObjectSuffix) $(IntermediateDirectory)/smartl_rv32_ck_irq$(ObjectSuffix) $(IntermediateDirectory)/smartl_rv32_ck_usart$(ObjectSuffix) $(IntermediateDirectory)/smartl_rv32_devices$(ObjectSuffix) $(IntermediateDirectory)/smartl_rv32_dw_gpio$(ObjectSuffix) $(IntermediateDirectory)/smartl_rv32_dw_timer$(ObjectSuffix) $(IntermediateDirectory)/smartl_rv32_isr$(ObjectSuffix) $(IntermediateDirectory)/smartl_rv32_lib$(ObjectSuffix) $(IntermediateDirectory)/smartl_rv32_novic_irq_tbl$(ObjectSuffix) $(IntermediateDirectory)/smartl_rv32_pinmux$(ObjectSuffix) \
-	$(IntermediateDirectory)/smartl_rv32_startup$(ObjectSuffix) $(IntermediateDirectory)/smartl_rv32_sys_freq$(ObjectSuffix) $(IntermediateDirectory)/smartl_rv32_system$(ObjectSuffix) $(IntermediateDirectory)/smartl_rv32_trap_c$(ObjectSuffix) $(IntermediateDirectory)/smartl_rv32_vectors$(ObjectSuffix) $(IntermediateDirectory)/libc_clock_gettime$(ObjectSuffix) $(IntermediateDirectory)/libc__init$(ObjectSuffix) $(IntermediateDirectory)/libc_malloc$(ObjectSuffix) $(IntermediateDirectory)/libc_minilibc_port$(ObjectSuffix) $(IntermediateDirectory)/libc_printf$(ObjectSuffix) \
+Objects0=$(IntermediateDirectory)/aim5101_board_board_init$(ObjectSuffix) $(IntermediateDirectory)/aim5101_rv32_ck_irq$(ObjectSuffix) $(IntermediateDirectory)/aim5101_rv32_ck_usart$(ObjectSuffix) $(IntermediateDirectory)/aim5101_rv32_devices$(ObjectSuffix) $(IntermediateDirectory)/aim5101_rv32_dw_gpio$(ObjectSuffix) $(IntermediateDirectory)/aim5101_rv32_dw_timer$(ObjectSuffix) $(IntermediateDirectory)/aim5101_rv32_isr$(ObjectSuffix) $(IntermediateDirectory)/aim5101_rv32_lib$(ObjectSuffix) $(IntermediateDirectory)/aim5101_rv32_novic_irq_tbl$(ObjectSuffix) $(IntermediateDirectory)/aim5101_rv32_pinmux$(ObjectSuffix) \
+	$(IntermediateDirectory)/aim5101_rv32_startup$(ObjectSuffix) $(IntermediateDirectory)/aim5101_rv32_sys_freq$(ObjectSuffix) $(IntermediateDirectory)/aim5101_rv32_system$(ObjectSuffix) $(IntermediateDirectory)/aim5101_rv32_trap_c$(ObjectSuffix) $(IntermediateDirectory)/aim5101_rv32_vectors$(ObjectSuffix) $(IntermediateDirectory)/libc_clock_gettime$(ObjectSuffix) $(IntermediateDirectory)/libc__init$(ObjectSuffix) $(IntermediateDirectory)/libc_malloc$(ObjectSuffix) $(IntermediateDirectory)/libc_minilibc_port$(ObjectSuffix) $(IntermediateDirectory)/libc_printf$(ObjectSuffix) \
 	$(IntermediateDirectory)/mm_dq_addlast$(ObjectSuffix) $(IntermediateDirectory)/mm_dq_rem$(ObjectSuffix) $(IntermediateDirectory)/mm_lib_mallinfo$(ObjectSuffix) $(IntermediateDirectory)/mm_mm_addfreechunk$(ObjectSuffix) $(IntermediateDirectory)/mm_mm_free$(ObjectSuffix) $(IntermediateDirectory)/mm_mm_initialize$(ObjectSuffix) $(IntermediateDirectory)/mm_mm_leak$(ObjectSuffix) $(IntermediateDirectory)/mm_mm_mallinfo$(ObjectSuffix) $(IntermediateDirectory)/mm_mm_malloc$(ObjectSuffix) $(IntermediateDirectory)/mm_mm_size2ndx$(ObjectSuffix) \
-	$(IntermediateDirectory)/ringbuffer_ringbuffer$(ObjectSuffix) $(IntermediateDirectory)/syslog_syslog$(ObjectSuffix) $(IntermediateDirectory)/gpio_example_gpio$(ObjectSuffix) 
+	$(IntermediateDirectory)/ringbuffer_ringbuffer$(ObjectSuffix) $(IntermediateDirectory)/syslog_syslog$(ObjectSuffix) $(IntermediateDirectory)/gpio_example_gpio$(ObjectSuffix) $(IntermediateDirectory)/gpio_aim5101_codec_gpio$(ObjectSuffix) 
 
 
 
@@ -107,75 +107,75 @@ $(IntermediateDirectory)/aim5101_board_board_init$(ObjectSuffix): ../../../../..
 Lst/aim5101_board_board_init$(PreprocessSuffix): ../../../../../board/aim5101_board/board_init.c
 	$(CC) $(CFLAGS)$(IncludeCPath) $(PreprocessOnlySwitch) $(OutputSwitch) Lst/aim5101_board_board_init$(PreprocessSuffix) ../../../../../board/aim5101_board/board_init.c
 
-$(IntermediateDirectory)/smartl_rv32_ck_irq$(ObjectSuffix): ../../../../../csi_driver/smartl_rv32/ck_irq.c  
-	$(CC) $(SourceSwitch) ../../../../../csi_driver/smartl_rv32/ck_irq.c $(CFLAGS) -MMD -MP -MT$(IntermediateDirectory)/smartl_rv32_ck_irq$(ObjectSuffix) -MF$(IntermediateDirectory)/smartl_rv32_ck_irq$(DependSuffix) $(ObjectSwitch)$(IntermediateDirectory)/smartl_rv32_ck_irq$(ObjectSuffix) $(IncludeCPath) $(IncludePackagePath)
-Lst/smartl_rv32_ck_irq$(PreprocessSuffix): ../../../../../csi_driver/smartl_rv32/ck_irq.c
-	$(CC) $(CFLAGS)$(IncludeCPath) $(PreprocessOnlySwitch) $(OutputSwitch) Lst/smartl_rv32_ck_irq$(PreprocessSuffix) ../../../../../csi_driver/smartl_rv32/ck_irq.c
+$(IntermediateDirectory)/aim5101_rv32_ck_irq$(ObjectSuffix): ../../../../../csi_driver/aim5101_rv32/ck_irq.c  
+	$(CC) $(SourceSwitch) ../../../../../csi_driver/aim5101_rv32/ck_irq.c $(CFLAGS) -MMD -MP -MT$(IntermediateDirectory)/aim5101_rv32_ck_irq$(ObjectSuffix) -MF$(IntermediateDirectory)/aim5101_rv32_ck_irq$(DependSuffix) $(ObjectSwitch)$(IntermediateDirectory)/aim5101_rv32_ck_irq$(ObjectSuffix) $(IncludeCPath) $(IncludePackagePath)
+Lst/aim5101_rv32_ck_irq$(PreprocessSuffix): ../../../../../csi_driver/aim5101_rv32/ck_irq.c
+	$(CC) $(CFLAGS)$(IncludeCPath) $(PreprocessOnlySwitch) $(OutputSwitch) Lst/aim5101_rv32_ck_irq$(PreprocessSuffix) ../../../../../csi_driver/aim5101_rv32/ck_irq.c
 
-$(IntermediateDirectory)/smartl_rv32_ck_usart$(ObjectSuffix): ../../../../../csi_driver/smartl_rv32/ck_usart.c  
-	$(CC) $(SourceSwitch) ../../../../../csi_driver/smartl_rv32/ck_usart.c $(CFLAGS) -MMD -MP -MT$(IntermediateDirectory)/smartl_rv32_ck_usart$(ObjectSuffix) -MF$(IntermediateDirectory)/smartl_rv32_ck_usart$(DependSuffix) $(ObjectSwitch)$(IntermediateDirectory)/smartl_rv32_ck_usart$(ObjectSuffix) $(IncludeCPath) $(IncludePackagePath)
-Lst/smartl_rv32_ck_usart$(PreprocessSuffix): ../../../../../csi_driver/smartl_rv32/ck_usart.c
-	$(CC) $(CFLAGS)$(IncludeCPath) $(PreprocessOnlySwitch) $(OutputSwitch) Lst/smartl_rv32_ck_usart$(PreprocessSuffix) ../../../../../csi_driver/smartl_rv32/ck_usart.c
+$(IntermediateDirectory)/aim5101_rv32_ck_usart$(ObjectSuffix): ../../../../../csi_driver/aim5101_rv32/ck_usart.c  
+	$(CC) $(SourceSwitch) ../../../../../csi_driver/aim5101_rv32/ck_usart.c $(CFLAGS) -MMD -MP -MT$(IntermediateDirectory)/aim5101_rv32_ck_usart$(ObjectSuffix) -MF$(IntermediateDirectory)/aim5101_rv32_ck_usart$(DependSuffix) $(ObjectSwitch)$(IntermediateDirectory)/aim5101_rv32_ck_usart$(ObjectSuffix) $(IncludeCPath) $(IncludePackagePath)
+Lst/aim5101_rv32_ck_usart$(PreprocessSuffix): ../../../../../csi_driver/aim5101_rv32/ck_usart.c
+	$(CC) $(CFLAGS)$(IncludeCPath) $(PreprocessOnlySwitch) $(OutputSwitch) Lst/aim5101_rv32_ck_usart$(PreprocessSuffix) ../../../../../csi_driver/aim5101_rv32/ck_usart.c
 
-$(IntermediateDirectory)/smartl_rv32_devices$(ObjectSuffix): ../../../../../csi_driver/smartl_rv32/devices.c  
-	$(CC) $(SourceSwitch) ../../../../../csi_driver/smartl_rv32/devices.c $(CFLAGS) -MMD -MP -MT$(IntermediateDirectory)/smartl_rv32_devices$(ObjectSuffix) -MF$(IntermediateDirectory)/smartl_rv32_devices$(DependSuffix) $(ObjectSwitch)$(IntermediateDirectory)/smartl_rv32_devices$(ObjectSuffix) $(IncludeCPath) $(IncludePackagePath)
-Lst/smartl_rv32_devices$(PreprocessSuffix): ../../../../../csi_driver/smartl_rv32/devices.c
-	$(CC) $(CFLAGS)$(IncludeCPath) $(PreprocessOnlySwitch) $(OutputSwitch) Lst/smartl_rv32_devices$(PreprocessSuffix) ../../../../../csi_driver/smartl_rv32/devices.c
+$(IntermediateDirectory)/aim5101_rv32_devices$(ObjectSuffix): ../../../../../csi_driver/aim5101_rv32/devices.c  
+	$(CC) $(SourceSwitch) ../../../../../csi_driver/aim5101_rv32/devices.c $(CFLAGS) -MMD -MP -MT$(IntermediateDirectory)/aim5101_rv32_devices$(ObjectSuffix) -MF$(IntermediateDirectory)/aim5101_rv32_devices$(DependSuffix) $(ObjectSwitch)$(IntermediateDirectory)/aim5101_rv32_devices$(ObjectSuffix) $(IncludeCPath) $(IncludePackagePath)
+Lst/aim5101_rv32_devices$(PreprocessSuffix): ../../../../../csi_driver/aim5101_rv32/devices.c
+	$(CC) $(CFLAGS)$(IncludeCPath) $(PreprocessOnlySwitch) $(OutputSwitch) Lst/aim5101_rv32_devices$(PreprocessSuffix) ../../../../../csi_driver/aim5101_rv32/devices.c
 
-$(IntermediateDirectory)/smartl_rv32_dw_gpio$(ObjectSuffix): ../../../../../csi_driver/smartl_rv32/dw_gpio.c  
-	$(CC) $(SourceSwitch) ../../../../../csi_driver/smartl_rv32/dw_gpio.c $(CFLAGS) -MMD -MP -MT$(IntermediateDirectory)/smartl_rv32_dw_gpio$(ObjectSuffix) -MF$(IntermediateDirectory)/smartl_rv32_dw_gpio$(DependSuffix) $(ObjectSwitch)$(IntermediateDirectory)/smartl_rv32_dw_gpio$(ObjectSuffix) $(IncludeCPath) $(IncludePackagePath)
-Lst/smartl_rv32_dw_gpio$(PreprocessSuffix): ../../../../../csi_driver/smartl_rv32/dw_gpio.c
-	$(CC) $(CFLAGS)$(IncludeCPath) $(PreprocessOnlySwitch) $(OutputSwitch) Lst/smartl_rv32_dw_gpio$(PreprocessSuffix) ../../../../../csi_driver/smartl_rv32/dw_gpio.c
+$(IntermediateDirectory)/aim5101_rv32_dw_gpio$(ObjectSuffix): ../../../../../csi_driver/aim5101_rv32/dw_gpio.c  
+	$(CC) $(SourceSwitch) ../../../../../csi_driver/aim5101_rv32/dw_gpio.c $(CFLAGS) -MMD -MP -MT$(IntermediateDirectory)/aim5101_rv32_dw_gpio$(ObjectSuffix) -MF$(IntermediateDirectory)/aim5101_rv32_dw_gpio$(DependSuffix) $(ObjectSwitch)$(IntermediateDirectory)/aim5101_rv32_dw_gpio$(ObjectSuffix) $(IncludeCPath) $(IncludePackagePath)
+Lst/aim5101_rv32_dw_gpio$(PreprocessSuffix): ../../../../../csi_driver/aim5101_rv32/dw_gpio.c
+	$(CC) $(CFLAGS)$(IncludeCPath) $(PreprocessOnlySwitch) $(OutputSwitch) Lst/aim5101_rv32_dw_gpio$(PreprocessSuffix) ../../../../../csi_driver/aim5101_rv32/dw_gpio.c
 
-$(IntermediateDirectory)/smartl_rv32_dw_timer$(ObjectSuffix): ../../../../../csi_driver/smartl_rv32/dw_timer.c  
-	$(CC) $(SourceSwitch) ../../../../../csi_driver/smartl_rv32/dw_timer.c $(CFLAGS) -MMD -MP -MT$(IntermediateDirectory)/smartl_rv32_dw_timer$(ObjectSuffix) -MF$(IntermediateDirectory)/smartl_rv32_dw_timer$(DependSuffix) $(ObjectSwitch)$(IntermediateDirectory)/smartl_rv32_dw_timer$(ObjectSuffix) $(IncludeCPath) $(IncludePackagePath)
-Lst/smartl_rv32_dw_timer$(PreprocessSuffix): ../../../../../csi_driver/smartl_rv32/dw_timer.c
-	$(CC) $(CFLAGS)$(IncludeCPath) $(PreprocessOnlySwitch) $(OutputSwitch) Lst/smartl_rv32_dw_timer$(PreprocessSuffix) ../../../../../csi_driver/smartl_rv32/dw_timer.c
+$(IntermediateDirectory)/aim5101_rv32_dw_timer$(ObjectSuffix): ../../../../../csi_driver/aim5101_rv32/dw_timer.c  
+	$(CC) $(SourceSwitch) ../../../../../csi_driver/aim5101_rv32/dw_timer.c $(CFLAGS) -MMD -MP -MT$(IntermediateDirectory)/aim5101_rv32_dw_timer$(ObjectSuffix) -MF$(IntermediateDirectory)/aim5101_rv32_dw_timer$(DependSuffix) $(ObjectSwitch)$(IntermediateDirectory)/aim5101_rv32_dw_timer$(ObjectSuffix) $(IncludeCPath) $(IncludePackagePath)
+Lst/aim5101_rv32_dw_timer$(PreprocessSuffix): ../../../../../csi_driver/aim5101_rv32/dw_timer.c
+	$(CC) $(CFLAGS)$(IncludeCPath) $(PreprocessOnlySwitch) $(OutputSwitch) Lst/aim5101_rv32_dw_timer$(PreprocessSuffix) ../../../../../csi_driver/aim5101_rv32/dw_timer.c
 
-$(IntermediateDirectory)/smartl_rv32_isr$(ObjectSuffix): ../../../../../csi_driver/smartl_rv32/isr.c  
-	$(CC) $(SourceSwitch) ../../../../../csi_driver/smartl_rv32/isr.c $(CFLAGS) -MMD -MP -MT$(IntermediateDirectory)/smartl_rv32_isr$(ObjectSuffix) -MF$(IntermediateDirectory)/smartl_rv32_isr$(DependSuffix) $(ObjectSwitch)$(IntermediateDirectory)/smartl_rv32_isr$(ObjectSuffix) $(IncludeCPath) $(IncludePackagePath)
-Lst/smartl_rv32_isr$(PreprocessSuffix): ../../../../../csi_driver/smartl_rv32/isr.c
-	$(CC) $(CFLAGS)$(IncludeCPath) $(PreprocessOnlySwitch) $(OutputSwitch) Lst/smartl_rv32_isr$(PreprocessSuffix) ../../../../../csi_driver/smartl_rv32/isr.c
+$(IntermediateDirectory)/aim5101_rv32_isr$(ObjectSuffix): ../../../../../csi_driver/aim5101_rv32/isr.c  
+	$(CC) $(SourceSwitch) ../../../../../csi_driver/aim5101_rv32/isr.c $(CFLAGS) -MMD -MP -MT$(IntermediateDirectory)/aim5101_rv32_isr$(ObjectSuffix) -MF$(IntermediateDirectory)/aim5101_rv32_isr$(DependSuffix) $(ObjectSwitch)$(IntermediateDirectory)/aim5101_rv32_isr$(ObjectSuffix) $(IncludeCPath) $(IncludePackagePath)
+Lst/aim5101_rv32_isr$(PreprocessSuffix): ../../../../../csi_driver/aim5101_rv32/isr.c
+	$(CC) $(CFLAGS)$(IncludeCPath) $(PreprocessOnlySwitch) $(OutputSwitch) Lst/aim5101_rv32_isr$(PreprocessSuffix) ../../../../../csi_driver/aim5101_rv32/isr.c
 
-$(IntermediateDirectory)/smartl_rv32_lib$(ObjectSuffix): ../../../../../csi_driver/smartl_rv32/lib.c  
-	$(CC) $(SourceSwitch) ../../../../../csi_driver/smartl_rv32/lib.c $(CFLAGS) -MMD -MP -MT$(IntermediateDirectory)/smartl_rv32_lib$(ObjectSuffix) -MF$(IntermediateDirectory)/smartl_rv32_lib$(DependSuffix) $(ObjectSwitch)$(IntermediateDirectory)/smartl_rv32_lib$(ObjectSuffix) $(IncludeCPath) $(IncludePackagePath)
-Lst/smartl_rv32_lib$(PreprocessSuffix): ../../../../../csi_driver/smartl_rv32/lib.c
-	$(CC) $(CFLAGS)$(IncludeCPath) $(PreprocessOnlySwitch) $(OutputSwitch) Lst/smartl_rv32_lib$(PreprocessSuffix) ../../../../../csi_driver/smartl_rv32/lib.c
+$(IntermediateDirectory)/aim5101_rv32_lib$(ObjectSuffix): ../../../../../csi_driver/aim5101_rv32/lib.c  
+	$(CC) $(SourceSwitch) ../../../../../csi_driver/aim5101_rv32/lib.c $(CFLAGS) -MMD -MP -MT$(IntermediateDirectory)/aim5101_rv32_lib$(ObjectSuffix) -MF$(IntermediateDirectory)/aim5101_rv32_lib$(DependSuffix) $(ObjectSwitch)$(IntermediateDirectory)/aim5101_rv32_lib$(ObjectSuffix) $(IncludeCPath) $(IncludePackagePath)
+Lst/aim5101_rv32_lib$(PreprocessSuffix): ../../../../../csi_driver/aim5101_rv32/lib.c
+	$(CC) $(CFLAGS)$(IncludeCPath) $(PreprocessOnlySwitch) $(OutputSwitch) Lst/aim5101_rv32_lib$(PreprocessSuffix) ../../../../../csi_driver/aim5101_rv32/lib.c
 
-$(IntermediateDirectory)/smartl_rv32_novic_irq_tbl$(ObjectSuffix): ../../../../../csi_driver/smartl_rv32/novic_irq_tbl.c  
-	$(CC) $(SourceSwitch) ../../../../../csi_driver/smartl_rv32/novic_irq_tbl.c $(CFLAGS) -MMD -MP -MT$(IntermediateDirectory)/smartl_rv32_novic_irq_tbl$(ObjectSuffix) -MF$(IntermediateDirectory)/smartl_rv32_novic_irq_tbl$(DependSuffix) $(ObjectSwitch)$(IntermediateDirectory)/smartl_rv32_novic_irq_tbl$(ObjectSuffix) $(IncludeCPath) $(IncludePackagePath)
-Lst/smartl_rv32_novic_irq_tbl$(PreprocessSuffix): ../../../../../csi_driver/smartl_rv32/novic_irq_tbl.c
-	$(CC) $(CFLAGS)$(IncludeCPath) $(PreprocessOnlySwitch) $(OutputSwitch) Lst/smartl_rv32_novic_irq_tbl$(PreprocessSuffix) ../../../../../csi_driver/smartl_rv32/novic_irq_tbl.c
+$(IntermediateDirectory)/aim5101_rv32_novic_irq_tbl$(ObjectSuffix): ../../../../../csi_driver/aim5101_rv32/novic_irq_tbl.c  
+	$(CC) $(SourceSwitch) ../../../../../csi_driver/aim5101_rv32/novic_irq_tbl.c $(CFLAGS) -MMD -MP -MT$(IntermediateDirectory)/aim5101_rv32_novic_irq_tbl$(ObjectSuffix) -MF$(IntermediateDirectory)/aim5101_rv32_novic_irq_tbl$(DependSuffix) $(ObjectSwitch)$(IntermediateDirectory)/aim5101_rv32_novic_irq_tbl$(ObjectSuffix) $(IncludeCPath) $(IncludePackagePath)
+Lst/aim5101_rv32_novic_irq_tbl$(PreprocessSuffix): ../../../../../csi_driver/aim5101_rv32/novic_irq_tbl.c
+	$(CC) $(CFLAGS)$(IncludeCPath) $(PreprocessOnlySwitch) $(OutputSwitch) Lst/aim5101_rv32_novic_irq_tbl$(PreprocessSuffix) ../../../../../csi_driver/aim5101_rv32/novic_irq_tbl.c
 
-$(IntermediateDirectory)/smartl_rv32_pinmux$(ObjectSuffix): ../../../../../csi_driver/smartl_rv32/pinmux.c  
-	$(CC) $(SourceSwitch) ../../../../../csi_driver/smartl_rv32/pinmux.c $(CFLAGS) -MMD -MP -MT$(IntermediateDirectory)/smartl_rv32_pinmux$(ObjectSuffix) -MF$(IntermediateDirectory)/smartl_rv32_pinmux$(DependSuffix) $(ObjectSwitch)$(IntermediateDirectory)/smartl_rv32_pinmux$(ObjectSuffix) $(IncludeCPath) $(IncludePackagePath)
-Lst/smartl_rv32_pinmux$(PreprocessSuffix): ../../../../../csi_driver/smartl_rv32/pinmux.c
-	$(CC) $(CFLAGS)$(IncludeCPath) $(PreprocessOnlySwitch) $(OutputSwitch) Lst/smartl_rv32_pinmux$(PreprocessSuffix) ../../../../../csi_driver/smartl_rv32/pinmux.c
+$(IntermediateDirectory)/aim5101_rv32_pinmux$(ObjectSuffix): ../../../../../csi_driver/aim5101_rv32/pinmux.c  
+	$(CC) $(SourceSwitch) ../../../../../csi_driver/aim5101_rv32/pinmux.c $(CFLAGS) -MMD -MP -MT$(IntermediateDirectory)/aim5101_rv32_pinmux$(ObjectSuffix) -MF$(IntermediateDirectory)/aim5101_rv32_pinmux$(DependSuffix) $(ObjectSwitch)$(IntermediateDirectory)/aim5101_rv32_pinmux$(ObjectSuffix) $(IncludeCPath) $(IncludePackagePath)
+Lst/aim5101_rv32_pinmux$(PreprocessSuffix): ../../../../../csi_driver/aim5101_rv32/pinmux.c
+	$(CC) $(CFLAGS)$(IncludeCPath) $(PreprocessOnlySwitch) $(OutputSwitch) Lst/aim5101_rv32_pinmux$(PreprocessSuffix) ../../../../../csi_driver/aim5101_rv32/pinmux.c
 
-$(IntermediateDirectory)/smartl_rv32_startup$(ObjectSuffix): ../../../../../csi_driver/smartl_rv32/startup.S  
-	$(AS) $(SourceSwitch) ../../../../../csi_driver/smartl_rv32/startup.S $(ASFLAGS) -MMD -MP -MT$(IntermediateDirectory)/smartl_rv32_startup$(ObjectSuffix) -MF$(IntermediateDirectory)/smartl_rv32_startup$(DependSuffix) $(ObjectSwitch)$(IntermediateDirectory)/smartl_rv32_startup$(ObjectSuffix) $(IncludeAPath) $(IncludePackagePath)
-Lst/smartl_rv32_startup$(PreprocessSuffix): ../../../../../csi_driver/smartl_rv32/startup.S
-	$(CC) $(CFLAGS)$(IncludeAPath) $(PreprocessOnlySwitch) $(OutputSwitch) Lst/smartl_rv32_startup$(PreprocessSuffix) ../../../../../csi_driver/smartl_rv32/startup.S
+$(IntermediateDirectory)/aim5101_rv32_startup$(ObjectSuffix): ../../../../../csi_driver/aim5101_rv32/startup.S  
+	$(AS) $(SourceSwitch) ../../../../../csi_driver/aim5101_rv32/startup.S $(ASFLAGS) -MMD -MP -MT$(IntermediateDirectory)/aim5101_rv32_startup$(ObjectSuffix) -MF$(IntermediateDirectory)/aim5101_rv32_startup$(DependSuffix) $(ObjectSwitch)$(IntermediateDirectory)/aim5101_rv32_startup$(ObjectSuffix) $(IncludeAPath) $(IncludePackagePath)
+Lst/aim5101_rv32_startup$(PreprocessSuffix): ../../../../../csi_driver/aim5101_rv32/startup.S
+	$(CC) $(CFLAGS)$(IncludeAPath) $(PreprocessOnlySwitch) $(OutputSwitch) Lst/aim5101_rv32_startup$(PreprocessSuffix) ../../../../../csi_driver/aim5101_rv32/startup.S
 
-$(IntermediateDirectory)/smartl_rv32_sys_freq$(ObjectSuffix): ../../../../../csi_driver/smartl_rv32/sys_freq.c  
-	$(CC) $(SourceSwitch) ../../../../../csi_driver/smartl_rv32/sys_freq.c $(CFLAGS) -MMD -MP -MT$(IntermediateDirectory)/smartl_rv32_sys_freq$(ObjectSuffix) -MF$(IntermediateDirectory)/smartl_rv32_sys_freq$(DependSuffix) $(ObjectSwitch)$(IntermediateDirectory)/smartl_rv32_sys_freq$(ObjectSuffix) $(IncludeCPath) $(IncludePackagePath)
-Lst/smartl_rv32_sys_freq$(PreprocessSuffix): ../../../../../csi_driver/smartl_rv32/sys_freq.c
-	$(CC) $(CFLAGS)$(IncludeCPath) $(PreprocessOnlySwitch) $(OutputSwitch) Lst/smartl_rv32_sys_freq$(PreprocessSuffix) ../../../../../csi_driver/smartl_rv32/sys_freq.c
+$(IntermediateDirectory)/aim5101_rv32_sys_freq$(ObjectSuffix): ../../../../../csi_driver/aim5101_rv32/sys_freq.c  
+	$(CC) $(SourceSwitch) ../../../../../csi_driver/aim5101_rv32/sys_freq.c $(CFLAGS) -MMD -MP -MT$(IntermediateDirectory)/aim5101_rv32_sys_freq$(ObjectSuffix) -MF$(IntermediateDirectory)/aim5101_rv32_sys_freq$(DependSuffix) $(ObjectSwitch)$(IntermediateDirectory)/aim5101_rv32_sys_freq$(ObjectSuffix) $(IncludeCPath) $(IncludePackagePath)
+Lst/aim5101_rv32_sys_freq$(PreprocessSuffix): ../../../../../csi_driver/aim5101_rv32/sys_freq.c
+	$(CC) $(CFLAGS)$(IncludeCPath) $(PreprocessOnlySwitch) $(OutputSwitch) Lst/aim5101_rv32_sys_freq$(PreprocessSuffix) ../../../../../csi_driver/aim5101_rv32/sys_freq.c
 
-$(IntermediateDirectory)/smartl_rv32_system$(ObjectSuffix): ../../../../../csi_driver/smartl_rv32/system.c  
-	$(CC) $(SourceSwitch) ../../../../../csi_driver/smartl_rv32/system.c $(CFLAGS) -MMD -MP -MT$(IntermediateDirectory)/smartl_rv32_system$(ObjectSuffix) -MF$(IntermediateDirectory)/smartl_rv32_system$(DependSuffix) $(ObjectSwitch)$(IntermediateDirectory)/smartl_rv32_system$(ObjectSuffix) $(IncludeCPath) $(IncludePackagePath)
-Lst/smartl_rv32_system$(PreprocessSuffix): ../../../../../csi_driver/smartl_rv32/system.c
-	$(CC) $(CFLAGS)$(IncludeCPath) $(PreprocessOnlySwitch) $(OutputSwitch) Lst/smartl_rv32_system$(PreprocessSuffix) ../../../../../csi_driver/smartl_rv32/system.c
+$(IntermediateDirectory)/aim5101_rv32_system$(ObjectSuffix): ../../../../../csi_driver/aim5101_rv32/system.c  
+	$(CC) $(SourceSwitch) ../../../../../csi_driver/aim5101_rv32/system.c $(CFLAGS) -MMD -MP -MT$(IntermediateDirectory)/aim5101_rv32_system$(ObjectSuffix) -MF$(IntermediateDirectory)/aim5101_rv32_system$(DependSuffix) $(ObjectSwitch)$(IntermediateDirectory)/aim5101_rv32_system$(ObjectSuffix) $(IncludeCPath) $(IncludePackagePath)
+Lst/aim5101_rv32_system$(PreprocessSuffix): ../../../../../csi_driver/aim5101_rv32/system.c
+	$(CC) $(CFLAGS)$(IncludeCPath) $(PreprocessOnlySwitch) $(OutputSwitch) Lst/aim5101_rv32_system$(PreprocessSuffix) ../../../../../csi_driver/aim5101_rv32/system.c
 
-$(IntermediateDirectory)/smartl_rv32_trap_c$(ObjectSuffix): ../../../../../csi_driver/smartl_rv32/trap_c.c  
-	$(CC) $(SourceSwitch) ../../../../../csi_driver/smartl_rv32/trap_c.c $(CFLAGS) -MMD -MP -MT$(IntermediateDirectory)/smartl_rv32_trap_c$(ObjectSuffix) -MF$(IntermediateDirectory)/smartl_rv32_trap_c$(DependSuffix) $(ObjectSwitch)$(IntermediateDirectory)/smartl_rv32_trap_c$(ObjectSuffix) $(IncludeCPath) $(IncludePackagePath)
-Lst/smartl_rv32_trap_c$(PreprocessSuffix): ../../../../../csi_driver/smartl_rv32/trap_c.c
-	$(CC) $(CFLAGS)$(IncludeCPath) $(PreprocessOnlySwitch) $(OutputSwitch) Lst/smartl_rv32_trap_c$(PreprocessSuffix) ../../../../../csi_driver/smartl_rv32/trap_c.c
+$(IntermediateDirectory)/aim5101_rv32_trap_c$(ObjectSuffix): ../../../../../csi_driver/aim5101_rv32/trap_c.c  
+	$(CC) $(SourceSwitch) ../../../../../csi_driver/aim5101_rv32/trap_c.c $(CFLAGS) -MMD -MP -MT$(IntermediateDirectory)/aim5101_rv32_trap_c$(ObjectSuffix) -MF$(IntermediateDirectory)/aim5101_rv32_trap_c$(DependSuffix) $(ObjectSwitch)$(IntermediateDirectory)/aim5101_rv32_trap_c$(ObjectSuffix) $(IncludeCPath) $(IncludePackagePath)
+Lst/aim5101_rv32_trap_c$(PreprocessSuffix): ../../../../../csi_driver/aim5101_rv32/trap_c.c
+	$(CC) $(CFLAGS)$(IncludeCPath) $(PreprocessOnlySwitch) $(OutputSwitch) Lst/aim5101_rv32_trap_c$(PreprocessSuffix) ../../../../../csi_driver/aim5101_rv32/trap_c.c
 
-$(IntermediateDirectory)/smartl_rv32_vectors$(ObjectSuffix): ../../../../../csi_driver/smartl_rv32/vectors.S  
-	$(AS) $(SourceSwitch) ../../../../../csi_driver/smartl_rv32/vectors.S $(ASFLAGS) -MMD -MP -MT$(IntermediateDirectory)/smartl_rv32_vectors$(ObjectSuffix) -MF$(IntermediateDirectory)/smartl_rv32_vectors$(DependSuffix) $(ObjectSwitch)$(IntermediateDirectory)/smartl_rv32_vectors$(ObjectSuffix) $(IncludeAPath) $(IncludePackagePath)
-Lst/smartl_rv32_vectors$(PreprocessSuffix): ../../../../../csi_driver/smartl_rv32/vectors.S
-	$(CC) $(CFLAGS)$(IncludeAPath) $(PreprocessOnlySwitch) $(OutputSwitch) Lst/smartl_rv32_vectors$(PreprocessSuffix) ../../../../../csi_driver/smartl_rv32/vectors.S
+$(IntermediateDirectory)/aim5101_rv32_vectors$(ObjectSuffix): ../../../../../csi_driver/aim5101_rv32/vectors.S  
+	$(AS) $(SourceSwitch) ../../../../../csi_driver/aim5101_rv32/vectors.S $(ASFLAGS) -MMD -MP -MT$(IntermediateDirectory)/aim5101_rv32_vectors$(ObjectSuffix) -MF$(IntermediateDirectory)/aim5101_rv32_vectors$(DependSuffix) $(ObjectSwitch)$(IntermediateDirectory)/aim5101_rv32_vectors$(ObjectSuffix) $(IncludeAPath) $(IncludePackagePath)
+Lst/aim5101_rv32_vectors$(PreprocessSuffix): ../../../../../csi_driver/aim5101_rv32/vectors.S
+	$(CC) $(CFLAGS)$(IncludeAPath) $(PreprocessOnlySwitch) $(OutputSwitch) Lst/aim5101_rv32_vectors$(PreprocessSuffix) ../../../../../csi_driver/aim5101_rv32/vectors.S
 
 $(IntermediateDirectory)/libc_clock_gettime$(ObjectSuffix): ../../../../../libs/libc/clock_gettime.c  
 	$(CC) $(SourceSwitch) ../../../../../libs/libc/clock_gettime.c $(CFLAGS) -MMD -MP -MT$(IntermediateDirectory)/libc_clock_gettime$(ObjectSuffix) -MF$(IntermediateDirectory)/libc_clock_gettime$(DependSuffix) $(ObjectSwitch)$(IntermediateDirectory)/libc_clock_gettime$(ObjectSuffix) $(IncludeCPath) $(IncludePackagePath)
@@ -266,6 +266,11 @@ $(IntermediateDirectory)/gpio_example_gpio$(ObjectSuffix): ../example_gpio.c
 	$(CC) $(SourceSwitch) ../example_gpio.c $(CFLAGS) -MMD -MP -MT$(IntermediateDirectory)/gpio_example_gpio$(ObjectSuffix) -MF$(IntermediateDirectory)/gpio_example_gpio$(DependSuffix) $(ObjectSwitch)$(IntermediateDirectory)/gpio_example_gpio$(ObjectSuffix) $(IncludeCPath) $(IncludePackagePath)
 Lst/gpio_example_gpio$(PreprocessSuffix): ../example_gpio.c
 	$(CC) $(CFLAGS)$(IncludeCPath) $(PreprocessOnlySwitch) $(OutputSwitch) Lst/gpio_example_gpio$(PreprocessSuffix) ../example_gpio.c
+
+$(IntermediateDirectory)/gpio_aim5101_codec_gpio$(ObjectSuffix): ../aim5101_codec_gpio.c  
+	$(CC) $(SourceSwitch) ../aim5101_codec_gpio.c $(CFLAGS) -MMD -MP -MT$(IntermediateDirectory)/gpio_aim5101_codec_gpio$(ObjectSuffix) -MF$(IntermediateDirectory)/gpio_aim5101_codec_gpio$(DependSuffix) $(ObjectSwitch)$(IntermediateDirectory)/gpio_aim5101_codec_gpio$(ObjectSuffix) $(IncludeCPath) $(IncludePackagePath)
+Lst/gpio_aim5101_codec_gpio$(PreprocessSuffix): ../aim5101_codec_gpio.c
+	$(CC) $(CFLAGS)$(IncludeCPath) $(PreprocessOnlySwitch) $(OutputSwitch) Lst/gpio_aim5101_codec_gpio$(PreprocessSuffix) ../aim5101_codec_gpio.c
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)

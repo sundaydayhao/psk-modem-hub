@@ -105,70 +105,70 @@
         <FileOption/>
       </File>
     </VirtualDirectory>
-    <VirtualDirectory Name="smartl_rv32">
-      <File Name="../../../../../csi_driver/smartl_rv32/ck_irq.c">
+    <VirtualDirectory Name="aim5101_rv32">
+      <File Name="../../../../../csi_driver/aim5101_rv32/ck_irq.c">
         <FileOption/>
       </File>
-      <File Name="../../../../../csi_driver/smartl_rv32/ck_usart.c">
+      <File Name="../../../../../csi_driver/aim5101_rv32/ck_usart.c">
         <FileOption/>
       </File>
-      <File Name="../../../../../csi_driver/smartl_rv32/devices.c">
+      <File Name="../../../../../csi_driver/aim5101_rv32/devices.c">
         <FileOption/>
       </File>
-      <File Name="../../../../../csi_driver/smartl_rv32/dw_gpio.c">
+      <File Name="../../../../../csi_driver/aim5101_rv32/dw_gpio.c">
         <FileOption/>
       </File>
-      <File Name="../../../../../csi_driver/smartl_rv32/dw_timer.c">
+      <File Name="../../../../../csi_driver/aim5101_rv32/dw_timer.c">
         <FileOption/>
       </File>
       <VirtualDirectory Name="include">
-        <File Name="../../../../../csi_driver/smartl_rv32/include/ck_usart.h">
+        <File Name="../../../../../csi_driver/aim5101_rv32/include/ck_usart.h">
           <FileOption/>
         </File>
-        <File Name="../../../../../csi_driver/smartl_rv32/include/dw_gpio.h">
+        <File Name="../../../../../csi_driver/aim5101_rv32/include/dw_gpio.h">
           <FileOption/>
         </File>
-        <File Name="../../../../../csi_driver/smartl_rv32/include/dw_timer.h">
+        <File Name="../../../../../csi_driver/aim5101_rv32/include/dw_timer.h">
           <FileOption/>
         </File>
-        <File Name="../../../../../csi_driver/smartl_rv32/include/pinmux.h">
+        <File Name="../../../../../csi_driver/aim5101_rv32/include/pinmux.h">
           <FileOption/>
         </File>
-        <File Name="../../../../../csi_driver/smartl_rv32/include/pin_name.h">
+        <File Name="../../../../../csi_driver/aim5101_rv32/include/pin_name.h">
           <FileOption/>
         </File>
-        <File Name="../../../../../csi_driver/smartl_rv32/include/soc.h">
+        <File Name="../../../../../csi_driver/aim5101_rv32/include/soc.h">
           <FileOption/>
         </File>
-        <File Name="../../../../../csi_driver/smartl_rv32/include/sys_freq.h">
+        <File Name="../../../../../csi_driver/aim5101_rv32/include/sys_freq.h">
           <FileOption/>
         </File>
       </VirtualDirectory>
-      <File Name="../../../../../csi_driver/smartl_rv32/isr.c">
+      <File Name="../../../../../csi_driver/aim5101_rv32/isr.c">
         <FileOption/>
       </File>
-      <File Name="../../../../../csi_driver/smartl_rv32/lib.c">
+      <File Name="../../../../../csi_driver/aim5101_rv32/lib.c">
         <FileOption/>
       </File>
-      <File Name="../../../../../csi_driver/smartl_rv32/novic_irq_tbl.c">
+      <File Name="../../../../../csi_driver/aim5101_rv32/novic_irq_tbl.c">
         <FileOption/>
       </File>
-      <File Name="../../../../../csi_driver/smartl_rv32/pinmux.c">
+      <File Name="../../../../../csi_driver/aim5101_rv32/pinmux.c">
         <FileOption/>
       </File>
-      <File Name="../../../../../csi_driver/smartl_rv32/startup.S">
+      <File Name="../../../../../csi_driver/aim5101_rv32/startup.S">
         <FileOption/>
       </File>
-      <File Name="../../../../../csi_driver/smartl_rv32/sys_freq.c">
+      <File Name="../../../../../csi_driver/aim5101_rv32/sys_freq.c">
         <FileOption/>
       </File>
-      <File Name="../../../../../csi_driver/smartl_rv32/system.c">
+      <File Name="../../../../../csi_driver/aim5101_rv32/system.c">
         <FileOption/>
       </File>
-      <File Name="../../../../../csi_driver/smartl_rv32/trap_c.c">
+      <File Name="../../../../../csi_driver/aim5101_rv32/trap_c.c">
         <FileOption/>
       </File>
-      <File Name="../../../../../csi_driver/smartl_rv32/vectors.S">
+      <File Name="../../../../../csi_driver/aim5101_rv32/vectors.S">
         <FileOption/>
       </File>
     </VirtualDirectory>
@@ -276,12 +276,18 @@
           <File Name="../../../../../projects/examples/driver/gpio/example_gpio.c">
             <FileOption/>
           </File>
+          <File Name="../../../../../projects/examples/driver/gpio/aim5101_codec_gpio.c">
+            <FileOption/>
+          </File>
+          <File Name="../../../../../projects/examples/driver/gpio/aim5101_codec_gpio.h">
+            <FileOption/>
+          </File>
         </VirtualDirectory>
       </VirtualDirectory>
     </VirtualDirectory>
   </VirtualDirectory>
   <VendorInfo>
-    <VendorName>new_psf_project_SmartL_E906FD-R2S2(V1.7.9)_smartl_e906fd-gpio</VendorName>
+    <VendorName>new_psf_project_AiM5101HXX(V1.7.9)_aim5101-gpio</VendorName>
   </VendorInfo>
   <ToolsConfig>
     <Compiler>
@@ -392,7 +398,7 @@
         <Undefine/>
         <Optim>Optimize size (-Os)</Optim>
         <DebugLevel>Maximum (-g3)</DebugLevel>
-        <IncludePath>$(ProjectPath);$(ProjectPath)/../../../../../csi_core/include;$(ProjectPath)/../../../../../csi_driver/include;$(ProjectPath)/../../../../../libs/include;$(ProjectPath)/../../../../../csi_driver/smartl_rv32/include;$(ProjectPath)/../../../../../csi_kernel/include;;$(ProjectPath)/../../../../../board/aim5101_board/include;;;;;;;;;$(ProjectPath)/../../../../../projects/examples/driver/gpio/configs</IncludePath>
+        <IncludePath>$(ProjectPath);$(ProjectPath)/../../../../../csi_core/include;$(ProjectPath)/../../../../../csi_driver/include;$(ProjectPath)/../../../../../libs/include;$(ProjectPath)/../../../../../csi_driver/aim5101_rv32/include;$(ProjectPath)/../../../../../csi_kernel/include;;$(ProjectPath)/../../../../../board/aim5101_board/include;;;;;;;;;$(ProjectPath)/../../../../../projects/examples/driver/gpio/configs</IncludePath>
         <OtherFlags>-ffunction-sections -fdata-sections</OtherFlags>
         <Verbose>no</Verbose>
         <Ansi>no</Ansi>

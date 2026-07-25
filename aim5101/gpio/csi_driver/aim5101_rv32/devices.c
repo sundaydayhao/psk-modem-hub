@@ -124,14 +124,12 @@ struct {
     port_name_e port;
 }
 const sg_gpio_config[CONFIG_GPIO_NUM] = {
-    {CSKY_GPIOA_BASE, GPIO0_IRQn, 0, PORTA},
-    {CSKY_GPIOA_BASE, GPIO1_IRQn, 0, PORTB},
-    {CSKY_GPIOA_BASE, GPIO2_IRQn, 0, PORTC},
-    {CSKY_GPIOA_BASE, GPIO3_IRQn, 0, PORTD},
-    {CSKY_GPIOA_BASE, GPIO4_IRQn, 0, PORTE},
-    {CSKY_GPIOA_BASE, GPIO5_IRQn, 0, PORTF},
-    {CSKY_GPIOA_BASE, GPIO6_IRQn, 0, PORTG},
-    {CSKY_GPIOA_BASE, GPIO7_IRQn, 0, PORTH},
+    {CSKY_GPIOA_BASE, GPIO0_IRQn, 16, PORTA},
+    {CSKY_GPIOB_BASE, GPIO1_IRQn, 16, PORTB},
+    {CSKY_GPIOC_BASE, GPIO2_IRQn, 16, PORTC},
+    {CSKY_GPIOD_BASE, GPIO3_IRQn, 16, PORTD},
+    {CSKY_GPIOE_BASE, GPIO4_IRQn, 16, PORTE},
+    {CSKY_GPIOF_BASE, GPIO5_IRQn, 16, PORTF},
 };
 
 typedef struct {
@@ -140,13 +138,13 @@ typedef struct {
 } gpio_pin_map_t;
 const static gpio_pin_map_t s_gpio_pin_map[] = {
     {PA0, 0},
-    {PA1, 1},
-    {PA2, 2},
-    {PA3, 3},
-    {PA4, 4},
-    {PA5, 5},
-    {PA6, 6},
-    {PA7, 7}
+    {PA1, 0},
+    {PA2, 0},
+    {PA3, 0},
+    {PA4, 0},
+    {PA5, 0},
+    {PA6, 0},
+    {PA7, 0}
 };
 
 int32_t target_gpio_port_init(port_name_e port, uint32_t *base, uint32_t *irq, void **handler, uint32_t *pin_num)
@@ -220,7 +218,7 @@ int32_t target_gpio_pin_init(int32_t gpio_pin, uint32_t *port_idx)
                 *port_idx = s_gpio_pin_map[idx].cfg_idx;
             }
 
-            return idx;
+            return s_gpio_pin_map[idx].gpio_pin;
         }
     }
 

@@ -12,49 +12,28 @@
 #include "soc.h"
 #include "pin_name.h"
 #include "pin.h"
+#include "aim5101_codec_gpio.h"
 
-#define AIM5101_GPIOA_BASE      0x60050000UL
-#define AIM5101_GPIO_DATA       (*(volatile uint32_t *)(AIM5101_GPIOA_BASE + 0x000UL))
-#define AIM5101_GPIO_DIR        (*(volatile uint32_t *)(AIM5101_GPIOA_BASE + 0x400UL))
-#define AIM5101_GPIO_DATA_EN    (*(volatile uint32_t *)(AIM5101_GPIOA_BASE + 0x424UL))
+#define CODEC_RESET_DELAY_COUNT 800000UL
 
-#define AIM5101_CRG_BASE        0x61000000UL
-#define AIM5101_PERI_CRG40      (*(volatile uint32_t *)(AIM5101_CRG_BASE + 0x0A0UL))
-
-#define AIM5101_CORE_IO_BASE    0x61001800UL
-#define AIM5101_PA0_IOCFG       (*(volatile uint32_t *)(AIM5101_CORE_IO_BASE + 0x000UL))
-
-#define PA0_BIT                 (1UL << 0)
-#define GPIO_TOGGLE_DELAY_COUNT 800000UL
-
-void example_pin_gpio_init(void)
+int example_pin_gpio_init(void)
 {
-    AIM5101_PA0_IOCFG = 0x00000000UL;
+    return aim5101_codec_gpio_init(&g_aim5101_codec_gpio_default_config);
 }
 
-static void gpio_delay(void)
+int gpio_output_toggle(void)
 {
-    volatile uint32_t i;
+    int ret = example_pin_gpio_init();
 
-    for (i = 0; i < GPIO_TOGGLE_DELAY_COUNT; i++) {
-        __asm volatile("nop");
+    if (ret != 0) {
+        return ret;
     }
-}
 
-void gpio_output_toggle(void)
-{
-    example_pin_gpio_init();
+    aim5101_codec_gpio_power(true);
+    aim5101_codec_gpio_reset_pulse(CODEC_RESET_DELAY_COUNT);
+    aim5101_codec_gpio_mute(false);
 
-    AIM5101_PERI_CRG40 = (AIM5101_PERI_CRG40 | 0x01UL) & ~(1UL << 16);
-    AIM5101_GPIO_DATA_EN |= PA0_BIT;
-    AIM5101_GPIO_DIR |= PA0_BIT;
-
-    while (1) {
-        AIM5101_GPIO_DATA &= ~PA0_BIT;
-        gpio_delay();
-        AIM5101_GPIO_DATA |= PA0_BIT;
-        gpio_delay();
-    }
+    return 0;
 }
 
 /*****************************************************************************
@@ -68,8 +47,7 @@ RETURN: NULL
 int example_gpio(pin_name_e gpio_pin)
 {
     (void)gpio_pin;
-    gpio_output_toggle();
-    return 0;
+    return gpio_output_toggle();
 }
 
 int main(void)
