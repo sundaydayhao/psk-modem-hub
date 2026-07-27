@@ -1,0 +1,48 @@
+; PSKCore.def : Declares the module parameters for the DLL.
+
+LIBRARY      "PSKCore"
+;DESCRIPTION  'PSKCore Windows Dynamic Link Library'
+
+EXPORTS
+    ; Explicit exports can go here
+	fnStartSoundCard @1
+	fnStopSoundCard @2
+	fnSetRXFrequency @3
+	fnSetRXPSKMode @4
+	fnGetRXFrequency @5
+	fnSetFFTMode @6
+	fnGetFFTData @7
+	fnGetClosestPeak @8
+	fnGetVectorData @9
+	fnGetSyncData @10
+	fnGetRawData @11
+	fnSetAFCLimit @12
+	fnSetSquelchThreshold @13
+	fnGetSignalLevel @14
+	fnStartTX @15
+	fnStopTX @16
+	fnAbortTX @17
+	fnSetTXFrequency @18
+	fnSetCWIDString @19
+	fnSendTXCharacter @20
+	fnSendTXString @21
+	fnGetTXCharsRemaining @22
+	fnClearTXBuffer @23
+	fnSetCWIDSpeed @24
+	fnSetComPort @25
+	fnSetClockErrorAdjustment @26
+	fnGetDLLVersion @27
+	fnGetErrorString @28
+	fnGetDebugData @29
+	fnRewindInput @30
+	fnSetInputWavePath @31
+	fnSetOutputWavePath @32
+	fnStartSoundCardEx @33
+	fnEnableRXChannel @34
+	fnIsRXChannelActive @35
+	fnGetNumActiveRXChannels @36
+	fnStartRXTXSoundCard @37
+
+
+
+

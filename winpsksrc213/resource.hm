@@ -1,0 +1,4 @@
+// Microsoft Developer Studio generated Help ID include file.
+// Used by WinPSK.rc
+//
+#define HIDC_F10BUTTON                  0x806503f9    // IDD_WINPSK_FORM

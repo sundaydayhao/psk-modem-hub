@@ -1,0 +1,78 @@
+# Microsoft Developer Studio Generated Dependency File, included by PSKCoreLib.mak
+
+..\CalcIMD.cpp : \
+	"..\CalcIMD.h"\
+	
+
+..\fft.cpp : \
+	"..\fft.h"\
+	
+
+..\IOCntrl.cpp : \
+	"..\CalcIMD.h"\
+	"..\ErrorCodes.h"\
+	"..\fft.h"\
+	"..\IOCntrl.h"\
+	"..\Perform.h"\
+	"..\PSKCore.h"\
+	"..\PskCoreImplicit.h"\
+	"..\PskDet.h"\
+	"..\PskDetTbl.h"\
+	"..\PSKMod.h"\
+	"..\Sound.h"\
+	"..\Wave.h"\
+	
+
+..\Perform.cpp : \
+	"..\Perform.h"\
+	
+
+..\PSKCore.cpp : \
+	"..\CalcIMD.h"\
+	"..\ErrorCodes.h"\
+	"..\fft.h"\
+	"..\IOCntrl.h"\
+	"..\Perform.h"\
+	"..\PSKCore.h"\
+	"..\PskCoreImplicit.h"\
+	"..\PskDet.h"\
+	"..\PskDetTbl.h"\
+	"..\PSKMod.h"\
+	"..\Sound.h"\
+	"..\Wave.h"\
+	
+
+..\PSKCore.rc : \
+	".\res\PSKCore.rc2"\
+	
+
+..\PskDet.cpp : \
+	"..\CalcIMD.h"\
+	"..\Perform.h"\
+	"..\PSKCore.h"\
+	"..\PskCoreImplicit.h"\
+	"..\PskDet.h"\
+	"..\PskDetTbl.h"\
+	"..\PSKTables.h"\
+	
+
+..\PSKMod.cpp : \
+	"..\PSKCore.h"\
+	"..\PskCoreImplicit.h"\
+	"..\PSKMod.h"\
+	"..\PSKTables.h"\
+	
+
+..\Sound.cpp : \
+	"..\ErrorCodes.h"\
+	"..\Sound.h"\
+	
+
+.\StdAfx.cpp : \
+	".\StdAfx.h"\
+	
+
+..\Wave.cpp : \
+	"..\ErrorCodes.h"\
+	"..\Wave.h"\
+	

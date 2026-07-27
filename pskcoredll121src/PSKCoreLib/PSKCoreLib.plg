@@ -1,0 +1,57 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: PSKCoreLib - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\MOWHEA~1\LOCALS~1\Temp\RSP26.tmp" with contents
+[
+/nologo /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /Fp"Release/PSKCoreLib.pch" /Yu"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\Program Files\Microsoft Visual Studio\MyProjects\PSK31Core\CalcIMD.cpp"
+"C:\Program Files\Microsoft Visual Studio\MyProjects\PSK31Core\IOCntrl.cpp"
+"C:\Program Files\Microsoft Visual Studio\MyProjects\PSK31Core\Perform.cpp"
+"C:\Program Files\Microsoft Visual Studio\MyProjects\PSK31Core\PSKCore.cpp"
+"C:\Program Files\Microsoft Visual Studio\MyProjects\PSK31Core\PskDet.cpp"
+"C:\Program Files\Microsoft Visual Studio\MyProjects\PSK31Core\PSKMod.cpp"
+"C:\Program Files\Microsoft Visual Studio\MyProjects\PSK31Core\Sound.cpp"
+"C:\Program Files\Microsoft Visual Studio\MyProjects\PSK31Core\Wave.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\MOWHEA~1\LOCALS~1\Temp\RSP26.tmp" 
+Creating temporary file "C:\DOCUME~1\MOWHEA~1\LOCALS~1\Temp\RSP27.tmp" with contents
+[
+/nologo /out:"Release\PSKCoreLib.lib" 
+".\Release\CalcIMD.obj"
+".\Release\fft.obj"
+".\Release\IOCntrl.obj"
+".\Release\Perform.obj"
+".\Release\PSKCore.obj"
+".\Release\PskDet.obj"
+".\Release\PSKMod.obj"
+".\Release\Sound.obj"
+".\Release\StdAfx.obj"
+".\Release\Wave.obj"
+".\Release\PSKCore.res"
+]
+Creating command line "link.exe -lib @C:\DOCUME~1\MOWHEA~1\LOCALS~1\Temp\RSP27.tmp"
+<h3>Output Window</h3>
+Compiling...
+CalcIMD.cpp
+IOCntrl.cpp
+Perform.cpp
+PSKCore.cpp
+PskDet.cpp
+PSKMod.cpp
+Sound.cpp
+Wave.cpp
+Generating Code...
+Creating library...
+
+
+
+<h3>Results</h3>
+PSKCoreLib.lib - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>
