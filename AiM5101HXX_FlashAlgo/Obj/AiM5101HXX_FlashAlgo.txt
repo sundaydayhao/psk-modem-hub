@@ -1,1 +1,0 @@
-Obj/crt0.o Obj/chip_name.o Obj/main.o Obj/driver.o Obj/FlashDev.o 
