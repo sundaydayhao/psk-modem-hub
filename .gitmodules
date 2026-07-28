@@ -1,0 +1,15 @@
+[submodule "esp32-psk-modem"]
+	path = esp32-psk-modem
+	url = https://gitee.com/zhanghaogit/esp32-psk-modem
+[submodule "psk-python"]
+	path = psk-python
+	url = https://gitee.com/zhanghaogit/psk-python
+[submodule "win-psk-src-213"]
+	path = win-psk-src-213
+	url = https://gitee.com/zhanghaogit/win-psk-src-213
+[submodule "nuepsk_source"]
+	path = nuepsk_source
+	url = https://gitee.com/zhanghaogit/nuepsk_source
+[submodule "pskcore-dll-121-src"]
+	path = pskcore-dll-121-src
+	url = https://gitee.com/zhanghaogit/pskcore-dll-121-src
