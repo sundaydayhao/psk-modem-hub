@@ -2,7 +2,7 @@
 
 这个仓库用于集中同步和管理多个 PSK 调制、解调、解码相关项目，方便在同一个工作区中查看、构建和对比不同平台上的实现。
 
-当前仓库作为汇总入口，嵌入式平台项目通过 Git 子模块维护，桌面端源码和测试脚本直接保存在本仓库中。
+当前仓库作为汇总入口，通过 Git 子模块引用嵌入式平台项目、桌面端源码和测试脚本。NUE-PSK 通过官方项目链接访问，参考文档保存在 `docs/` 中。
 
 ## 子模块
 
@@ -14,15 +14,20 @@
 | `hpm6750-psk-modem` | [hpm6750-psk-modem](https://github.com/sundaydayhao/hpm6750-psk-modem) | HPM6750 平台 PSK modem |
 | `stm32f7-psk-modem` | [stm32f7-psk-modem](https://github.com/sundaydayhao/stm32f7-psk-modem) | STM32F7 平台 PSK modem |
 | `stm32h7-psk-modem` | [stm32h7-psk-modem](https://github.com/sundaydayhao/stm32h7-psk-modem) | STM32H7 平台 PSK modem |
+| `winpsk` | [swharden/WinPSK](https://github.com/swharden/WinPSK) | WinPSK 客户端与 PSKCore DLL 源码，共用一个子模块 |
+| `psk-script` | [psk-script](https://github.com/sundaydayhao/psk-script) | PSK 测试音频生成脚本及示例文件 |
 
-## 本仓库内的源码和脚本
+## 参考源码入口
 
-| 路径 | 说明 |
+| 项目 | 链接 |
 | --- | --- |
-| [nuepsk_src](nuepsk_src/) | NUE-PSK 相关源码 |
-| [pskcore-dll-src](pskcore-dll-src/) | PSK Core DLL 源码 |
-| [win-psk-src](win-psk-src/) | Windows PSK 源码 |
-| [psk-script](psk-script/) | PSK 测试音频生成脚本及示例文件 |
+| WinPSK 客户端（原 `win-psk-src/`） | [WinPSK/src/WinPSK](https://github.com/swharden/WinPSK/tree/5309bc95e8467e8fdda55deac057273137c8579e/src/WinPSK) |
+| PSKCore DLL（原 `pskcore-dll-src/`） | [WinPSK/src/PSKCore](https://github.com/swharden/WinPSK/tree/5309bc95e8467e8fdda55deac057273137c8579e/src/PSKCore) |
+| NUE-PSK（原 `nuepsk_src/`） | [官方项目与源码下载](https://www.midnightdesignsolutions.com/NUE-PSK/index.html) |
+
+`winpsk` 固定在与原始源码匹配的提交 `5309bc95e8467e8fdda55deac057273137c8579e`；`psk-script` 固定在与原目录文件匹配的提交 `33bfa3c49be5dfd3b0be6afeb22984ff1cb1f8ed`。NUE-PSK 未找到可核验的完整 GitHub 仓库，因此仅保留官方链接。
+
+来源、文件比对和历史说明见 [源码引用说明](docs/source-references.md)。
 
 ## 使用方式
 

@@ -16,3 +16,9 @@
 [submodule "esp32c3-psk-modem"]
 	path = esp32c3-psk-modem
 	url = https://github.com/sundaydayhao/esp32c3-psk-modem.git
+[submodule "winpsk"]
+	path = winpsk
+	url = https://github.com/swharden/WinPSK.git
+[submodule "psk-script"]
+	path = psk-script
+	url = https://github.com/sundaydayhao/psk-script.git
