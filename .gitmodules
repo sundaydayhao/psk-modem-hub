@@ -1,18 +1,18 @@
 [submodule "hpm6750-psk-modem"]
 	path = hpm6750-psk-modem
-	url = https://gitee.com/zhanghaogit/hpm6750-psk-modem
+	url = https://github.com/sundaydayhao/hpm6750-psk-modem.git
 [submodule "esp32p4-psk-modem"]
 	path = esp32p4-psk-modem
-	url = https://gitee.com/zhanghaogit/esp32p4-psk-modem
+	url = https://github.com/sundaydayhao/esp32p4-psk-modem.git
 [submodule "stm32h7-psk-modem"]
 	path = stm32h7-psk-modem
-	url = https://gitee.com/zhanghaogit/stm32h7-psk-modem
+	url = https://github.com/sundaydayhao/stm32h7-psk-modem.git
 [submodule "esp32s3-psk-modem"]
 	path = esp32s3-psk-modem
-	url = https://gitee.com/zhanghaogit/esp32s3-psk-modem
+	url = https://github.com/sundaydayhao/esp32s3-psk-modem.git
 [submodule "stm32f7-psk-modem"]
 	path = stm32f7-psk-modem
-	url = https://gitee.com/zhanghaogit/stm32f7-psk-modem
+	url = https://github.com/sundaydayhao/stm32f7-psk-modem.git
 [submodule "esp32c3-psk-modem"]
 	path = esp32c3-psk-modem
-	url = https://gitee.com/zhanghaogit/esp32c3-psk-modem
+	url = https://github.com/sundaydayhao/esp32c3-psk-modem.git
